@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',#from apps.py class
     'listings.apps.ListingsConfig',
-    'realtors.apps.RealtorsConfig'
+    'realtors.apps.RealtorsConfig',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
