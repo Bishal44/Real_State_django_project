@@ -25,9 +25,40 @@ def listing(request,listing_id):
     }
     return render(request,'listings/listing.html',context)
 def search(request):
+
+    query_list=Listing.objects.order_by('-list_date')
+    #keywords
+    if 'keywords' in request.GET:
+        keywords=request.GET['keywords']
+        if keywords:      #to check empty keyword
+            query_list=query_list.filter(description__icontains=keywords) #to search in description
+
+    #city
+    if 'city' in request.GET:
+        city=request.GET['city']
+        if city:      #to check empty keyword
+            query_list=query_list.filter(city__iexact=city) #for exjact matching
+
+  # state
+    if 'state' in request.GET:
+        state = request.GET['state']
+        if state:  # to check empty keyword
+             query_list = query_list.filter(state__iexact=state)  # for exjact matching
+# bedroom
+    if 'bedrooms' in request.GET:
+        bedrooms = request.GET['bedrooms']#in fornt end search for name attribute of select tag
+        if bedrooms:  # to check empty keyword
+            query_list = query_list.filter(beadrooms__lte=bedrooms)  # for less than equal to matching
+ # price
+    if 'price' in request.GET:
+        price = request.GET['price']
+        if price:  # to check empty keyword
+             query_list = query_list.filter(price__lte=price)  # for less than equal to matching
+
     context={
         'state_choices': state_choices,
         'bed_choices': bedroom_choices,
-        'price_choices': price_choices
+        'price_choices': price_choices,
+        'listings':query_list
     }
     return render(request,'listings/search.html',context)
