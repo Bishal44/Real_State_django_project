@@ -11,6 +11,7 @@ urlpatterns = [
     path('listing/',include('listings.urls')),
     path('accounts/',include('accounts.urls')),
     path('admin/', admin.site.urls),
+    path('contacts/', include('contacts.urls')),
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 # +static is for image to show
