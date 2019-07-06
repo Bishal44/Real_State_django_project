@@ -8,22 +8,35 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('listing', models.CharField(max_length=200)),
-                ('listing_id', models.IntegerField()),
-                ('name', models.CharField(max_length=200)),
-                ('email', models.CharField(max_length=200)),
-                ('phone', models.CharField(max_length=200)),
-                ('message', models.TextField(blank=True)),
-                ('contact_date', models.DateTimeField(blank=True, default=datetime.datetime(2019, 2, 19, 9, 11, 32, 599197))),
-                ('user_id', models.IntegerField(blank=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("listing", models.CharField(max_length=200)),
+                ("listing_id", models.IntegerField()),
+                ("name", models.CharField(max_length=200)),
+                ("email", models.CharField(max_length=200)),
+                ("phone", models.CharField(max_length=200)),
+                ("message", models.TextField(blank=True)),
+                (
+                    "contact_date",
+                    models.DateTimeField(
+                        blank=True,
+                        default=datetime.datetime(2019, 2, 19, 9, 11, 32, 599197),
+                    ),
+                ),
+                ("user_id", models.IntegerField(blank=True)),
             ],
-        ),
+        )
     ]
